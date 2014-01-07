@@ -19,6 +19,14 @@
 	</properties>
 
 	<dependencies>
+	    <!-- added mongodb jar -->
+	    <dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.11.3</version>
+			
+		</dependency>
+		
 	
 		<!-- adding logging jars -->
 		<dependency>

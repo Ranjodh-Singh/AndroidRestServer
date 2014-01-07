@@ -1,5 +1,6 @@
 package org.columbia.assignment.android.service;
 
+import java.net.UnknownHostException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +12,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.mongodb.MongoClient;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+
 
 
 
@@ -21,6 +24,15 @@ import com.mysql.jdbc.Statement;
 public class RDSEntityOperationsService {
 	private Connection connect = null;
 	private Statement statement = null;
+	MongoClient mongoClient;
+	RDSEntityOperationsService(){
+		try {
+			mongoClient	 = new MongoClient( "ds059898.mongolab.com" , 59898 );
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			System.out.println("--------Unable to connect to mongoDB Server-----------");
+		}
+	}
 	
 	private int max = 0;
 	@POST
@@ -30,7 +42,8 @@ public class RDSEntityOperationsService {
 				
 		System.out.println("Hello post call");
 			if(userDBObject.getOperationType().equals("INSERT")){
-				insertUserRegDetails(userDBObject);
+				//insertUserRegDetails(userDBObject);
+				insertUserRegistrationDetails(userDBObject);
 			}else if (userDBObject.getOperationType().equals("SELECT")){
 				getUserDetails(userDBObject);
 			}else if (userDBObject.getOperationType().equals("UPDATE")){
@@ -40,6 +53,13 @@ public class RDSEntityOperationsService {
 	 }
 
 	
+	private void insertUserRegistrationDetails(UserDBObject userDBObject) {
+		
+		 	
+		
+	}
+
+
 	private void updateUserDetails(UserDBObject userDBObject) {
 		// TODO Auto-generated method stub
 		try {
