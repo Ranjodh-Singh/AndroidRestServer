@@ -10,7 +10,7 @@ public class PhoneNumbersEntity implements Serializable {
 	public PhoneNumbersEntity() {
 		super();this.phoneNumbers = new ArrayList<String>();
 		
-		// TODO Auto-generated constructor stub
+		
 	}
 	/**
 	 * 
